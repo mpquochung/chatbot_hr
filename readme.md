@@ -9,9 +9,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -43,6 +40,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li><a href="#architecture">Architecture</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -56,8 +54,6 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -79,7 +75,19 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * ![llm][claude]
 * ![dbms][pg]
 
+<!-- Architecture -->
+## Architecture
+See the architecture of the chat backend as follow for easy visualization.
+![backend-architecture][architecture]
 
+
+1. **Decider** (Claude3 Haiku): Determines whether to initiate a normal conversation or start the process to search for suitable CVs.
+2. **Normal Chat** (Claude3 Haiku): Initiates a conversation with LLM when a normal chat is invoked by the Decider.
+3. **Retransforming Queries** (Claude3 Sonnet): Transforms user prompts into more accurate queries for finding suitable applicants by generating different variations. This helps improve search accuracy. For example, a complex query like “I want to find a Backend developer with over 5 years of experience and expertise in Java Springboot and Node.js” is broken down into simpler queries.
+4. **Semantic Search** (pgvector): Uses the transformed queries to perform a semantic search for CVs that match the HR requirements.
+5. **Top k CVs**: Identifies the top k most suitable CVs based on a predefined threshold or relevance score. These initial results may require further refinement.
+6. **Reranking** (Cohere rerank3 on Sagemaker): Uses a reranking model to evaluate and refine the top k CVs to identify the top 5 best candidates using the Cohere Command model hosted on AWS SageMaker.
+7. **Reasoning** (Claude3 Sonnet): The final stage involves providing a summary and analysis of the top-ranked CVs, highlighting key skills, experiences, past projects, achievements, and educational background. The LLM offers a recommendation on whether to shortlist or reject each candidate, with justifications to support informed decision-making.
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -189,11 +197,11 @@ Finally, I want to express my appreciation to those who support me in this proje
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/mpquochung/chatbot_hr/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://www.linkedin.com/in/qhungmp/
 [product-screenshot]: image/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
@@ -219,4 +227,4 @@ Finally, I want to express my appreciation to those who support me in this proje
 [OPENAI]: https://img.shields.io/badge/OPENAI%20API-%23412991?logo=openai&logoColor=%23412991&color=white
 [Claude]: https://img.shields.io/badge/AWS%20Bedrock%20Claude3-%23191919?logo=anthropic&logoColor=%23191919&color=white
 [pg]: https://img.shields.io/badge/Postgres%20SQL-%234169E1?logo=postgresql&logoColor=%234169E1&color=white
-
+[architecture]: image/architecture.png
