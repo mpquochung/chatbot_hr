@@ -22,19 +22,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="image/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">CV finder</h3>
 
   <p align="center">
     This project is aim to search for suitable applicant base on request of HR base on a LLM system. The user (HR) can chat with the app interface.
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
 </div>
 
 
@@ -58,7 +52,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -69,38 +62,22 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Product Name Screen Shot][product-screenshot]
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+"HR Chatbot" is a cutting-edge application that revolutionizes the recruitment process. It leverages Langchain and AWS services to create a chatbot that interacts with HR professionals. The chatbot uses a Language Model (LLM) to understand HR requests and search for suitable job applicants. Users can chat with the application, inputting their specific requirements, and the chatbot will provide the most relevant candidate profiles. This application simplifies the recruitment process, making it more efficient and user-friendly.
 
 
 ### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+* [![Str][Streamlit]][Streamlit-url]
+* ![bucket][S3]
+* ![db][RDS]
+* ![instace][EC2]
+* ![embedding][OPENAI]
+* ![llm][claude]
+* ![dbms][pg]
 
 
 <!-- GETTING STARTED -->
@@ -111,77 +88,63 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+The configuration is complicated to implement since everything is on the Cloud! Here are prerequisites of the app:
+* OPENAI API
+* AWS Bedrock Foundation Models Access (Claude-3-haiku, Claude-3-Sonnet)
+* AWS S3
+* AWS RDS: PostgresSQL database & pgvector
+* AWS Sagemaker: Cohere-rerank-multilingual-3 endpoint
+* AWS EC2 instance
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_Below are steps how you can install the app. Assuming that you have all access to the prerequisites._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/mpquochung/chatbot_hr.git
    ```
-3. Install NPM packages
+2. Change directory into the root folder
    ```sh
-   npm install
+   cd chatbot_hr
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Install all required library
+   ```py
+   !pip install requirements.txt
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+4. Create ".env" file and config your ".env" up to the example in ".env.example"
+   ```py
+   OPENAI_API_KEY= 'Enter your API key'
+   PGVECTOR_WRITER_HOST = 'Enter pgvector endpoint'
+   ...
+   ```
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Start
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+To start with, first you must execute the streamlit function to start the app.
+   ```sh
+   streamlit run Home.py --server.port 8080 
+   ```
+### How to use
+1. Go to the 'Upload CV' page.
+2. Upload CV files in one of the following formats: docx, doc, pdf, xlsx.
+3. Go to "CV management" page to verify if the CV is well handled. 
+4. Enter the chatbot and feel free to try it out. You can ask anything about the CV.
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- [x] Build chat-backend
+- [x] Build chat user interface
+- [x] Deploy
+- [ ] Prompt engineering
+- [ ] Graph-base query
 
 
+See the [open issues]([https://github.com/othneildrew/Best-README-Template/issues](https://github.com/mpquochung/chatbot_hr/issues)) for a full list of proposed features (and known issues).
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -189,8 +152,6 @@ Don't forget to give the project a star! Thanks again!
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -201,7 +162,6 @@ Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.c
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -237,9 +197,11 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: image/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
+[Streamlit]: https://img.shields.io/badge/Streamlit-%23FF4B4B?logo=streamlit&color=white
+[Streamlit-url]: https://streamlit.io
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
@@ -254,3 +216,10 @@ Use this space to list resources you find helpful and would like to give credit 
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[S3]: https://img.shields.io/badge/AWS%20S3-%23569A31?logo=amazons3&color=white
+[RDS]: https://img.shields.io/badge/AWS%20RDS-%23569A31?logo=amazonrds&color=white
+[EC2]: https://img.shields.io/badge/AWS%20EC2-%23569A31?logo=amazonec2&color=white
+[OPENAI]: https://img.shields.io/badge/OPENAI%20API-%23412991?logo=openai&logoColor=%23412991&color=white
+[Claude]: https://img.shields.io/badge/AWS%20Bedrock%20Claude3-%23191919?logo=anthropic&logoColor=%23191919&color=white
+[pg]: https://img.shields.io/badge/Postgres%20SQL-%234169E1?logo=postgresql&logoColor=%234169E1&color=white
+
