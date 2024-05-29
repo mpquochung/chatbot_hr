@@ -120,8 +120,8 @@ _Below are steps how you can install the app. Assuming that you have all access 
    ```
 
 <!-- USAGE EXAMPLES -->
-## Start
-
+## Usage
+### Start app
 To start with, first you must execute the streamlit function to start the app.
    ```sh
    streamlit run Home.py --server.port 8080 
@@ -143,7 +143,7 @@ To start with, first you must execute the streamlit function to start the app.
 - [ ] Graph-base query
 
 
-See the [open issues]([https://github.com/othneildrew/Best-README-Template/issues](https://github.com/mpquochung/chatbot_hr/issues)) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/mpquochung/chatbot_hr/issues) for a full list of proposed features (and known issues).
 
 
 
@@ -158,26 +158,23 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Mai Phan Quốc Hưng - [@linkedin](https://www.linkedin.com/in/qhungmp/) - maphquochung@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
+Project Link: [github](https://github.com/mpquochung/chatbot_hr.git) 
 
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+This project is inherrited from many source. Here are some soure to reference:
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [Agent](https://github.com/aws-samples/aws-agentic-document-assistant)
+* [pgvector](https://aws.amazon.com/vi/blogs/database/leverage-pgvector-and-amazon-aurora-postgresql-for-natural-language-processing-chatbots-and-sentiment-analysis/)
+* [workshop](https://github.com/aws-samples/amazon-bedrock-workshop)
+
+Finally, I want to express my appreciation to those who support me in this project. Without their discussions about the product and support in configuring AWS services and the database, I could not have completed this project successfully.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
